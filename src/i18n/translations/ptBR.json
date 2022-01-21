@@ -1,3 +1,5 @@
 {
-  "welcome": "Bem-vindo(a)"
+  "looks-like-you-havent-added-a-city-yet": "Parece que você ainda não adicionou uma cidade",
+  "try-adding-a-city-using-the-plus-button": "Tente adicionar uma cidade usando o botão de +",
+  "type-the-city-here": "Digite a cidade aqui"
 }

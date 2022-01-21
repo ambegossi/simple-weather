@@ -1,3 +1,5 @@
 {
-  "welcome": "Welcome"
+  "looks-like-you-havent-added-a-city-yet": "Looks like you haven't added a city yet",
+  "try-adding-a-city-using-the-plus-button": "Try adding a city using the + button",
+  "type-the-city-here": "Type the city here"
 }
