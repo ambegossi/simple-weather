@@ -55,7 +55,7 @@ export function GooglePlacesInput({ setCity }: Props) {
           paddingVertical: 14,
           paddingHorizontal: 16,
           color: '#fff',
-          backgroundColor: theme.colors.google_places_input_background,
+          backgroundColor: theme.colors.google_places_input_bg,
           fontSize: 15,
         },
       }}

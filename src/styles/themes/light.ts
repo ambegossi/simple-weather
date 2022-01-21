@@ -9,8 +9,11 @@ export default {
     shape: '#FFFFFF',
     background: '#FAFAFA',
 
-    google_places_input_background: '#8F8F8F',
+    google_places_input_bg: '#8F8F8F',
     google_places_input_placeholder: '#FFFFFF',
+
+    button_primary_bg: '#1A1A1A',
+    button_primary_text: '#FFFFFF',
   },
   typography: {
     sizes: {
