@@ -1,15 +1,16 @@
 export default {
   colors: {
     primary: '#FFFFFF',
-    secondary: '#1a1a1a',
+    secondary: '#1A1A1A',
 
     text_primary: '#FFFFFF',
-    text_secondary: '#CCCCCC',
-    placeholder: '#CCCCCC',
+    text_secondary: '#8F8F8F',
 
-    shape: '#1a1a1a',
-    background: '#1a1a1a',
-    border: '#CCCCCC',
+    shape: '#1A1A1A',
+    background: '#1A1A1A',
+
+    google_places_input_background: '#8F8F8F',
+    google_places_input_placeholder: '#FFFFFF',
   },
   typography: {
     sizes: {
