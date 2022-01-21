@@ -1,6 +1,6 @@
 import { LOCALES } from '../i18n';
 
-export const getLocaleFromDeviceLocale = (deviceLocale: string) => {
+export function getLocaleFromDeviceLocale(deviceLocale: string) {
   switch (deviceLocale) {
     case 'en':
       return LOCALES.ENGLISH;
@@ -9,4 +9,15 @@ export const getLocaleFromDeviceLocale = (deviceLocale: string) => {
     default:
       return 'en';
   }
-};
+}
+
+export function getGooglePlacesLanguage(locale: string) {
+  switch (locale) {
+    case LOCALES.ENGLISH:
+      return 'en';
+    case LOCALES.PORTUGUESE_BR:
+      return 'pt-BR';
+    default:
+      return 'en';
+  }
+}

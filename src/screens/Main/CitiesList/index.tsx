@@ -61,7 +61,7 @@ export function CitiesList() {
     <List<ElementType>
       data={weatherCities}
       renderItem={({ item }: { item: WeatherCity }) => <CityCard city={item} />}
-      keyExtractor={(item: WeatherCity) => item.name}
+      keyExtractor={(item: WeatherCity) => item.id}
     />
   );
 }

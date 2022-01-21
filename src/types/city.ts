@@ -1,7 +1,7 @@
 import { Weather } from './weather';
 
 export type City = {
-  id: string;
+  id: string | number[];
   name: string;
   state: string;
   country: string;
