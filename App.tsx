@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
 import * as Localization from 'expo-localization';
@@ -12,13 +11,15 @@ import themes from './src/styles/themes';
 import { Routes } from './src/routes';
 import { resources, LOCALES } from './src/i18n';
 import { getLocaleFromDeviceLocale } from './src/utils/locale';
+import { usePreferences } from './src/store/usePreferences';
 
 export default function App() {
-  const deviceTheme = useColorScheme();
+  const isDarkMode = usePreferences(state => state.isDarkMode);
+
   const [i18nInitialized, setI18nInitialized] = useState(false);
 
-  const theme = deviceTheme ? themes[deviceTheme] : themes.light;
-  const statusBarStyle = deviceTheme === 'dark' ? 'light' : 'dark';
+  const theme = isDarkMode ? themes.dark : themes.light;
+  const statusBarStyle = isDarkMode ? 'light' : 'dark';
 
   useEffect(() => {
     const initI18n = async () => {

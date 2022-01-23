@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 
-import { GooglePlacesInput } from '../../components/GooglePlacesInput';
-import { CityCard } from './CityCard';
+import { usePreferences } from '../../store/usePreferences';
 
-import { City } from '../../types/city';
+import {
+  Container,
+  Header,
+  Title,
+  ContentContainer,
+  Row,
+  PreferenceName,
+} from './styles';
 
-import { Container, Header, Title } from './styles';
-
-export function AddCity() {
+export function Preferences() {
   const theme = useTheme();
   const navigation = useNavigation();
   const { t } = useTranslation();
 
-  const [city, setCity] = useState<City | null>(null);
+  const { isDarkMode, toggleDarkMode } = usePreferences();
 
   function handleBack() {
     navigation.goBack();
   }
+
+  const toggleSwitch = () => toggleDarkMode();
 
   return (
     <Container>
@@ -33,12 +39,15 @@ export function AddCity() {
             color={theme.colors.primary}
           />
         </TouchableOpacity>
-        <Title>{t('add-city')}</Title>
+        <Title>{t('preferences')}</Title>
       </Header>
 
-      <GooglePlacesInput setCity={setCity} />
-
-      {city && <CityCard city={city} />}
+      <ContentContainer>
+        <Row>
+          <PreferenceName>{t('dark-mode')}</PreferenceName>
+          <Switch onValueChange={toggleSwitch} value={isDarkMode} />
+        </Row>
+      </ContentContainer>
     </Container>
   );
 }

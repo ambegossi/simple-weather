@@ -29,8 +29,12 @@ export function Main() {
     city => !favoriteCitiesIds.includes(city.id),
   );
 
-  function handleNavigateAddCity() {
+  function handleNavigateToAddCity() {
     navigation.navigate('AddCity');
+  }
+
+  function handleNavigateToPreferences() {
+    navigation.navigate('Preferences');
   }
 
   useFocusEffect(
@@ -42,14 +46,14 @@ export function Main() {
   return (
     <Container>
       <Header>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigateToPreferences}>
           <Ionicons
             name="settings-outline"
             size={34}
             color={theme.colors.primary}
           />
         </TouchableOpacity>
-        <AddButton onPress={handleNavigateAddCity}>
+        <AddButton onPress={handleNavigateToAddCity}>
           <Ionicons name="add" size={24} color={theme.colors.secondary} />
         </AddButton>
       </Header>

@@ -7,6 +7,7 @@ export default {
     text_secondary: '#8F8F8F',
 
     shape: '#FFFFFF',
+    shadow: '#1A1A1A',
     background: '#FAFAFA',
 
     google_places_input_bg: '#8F8F8F',

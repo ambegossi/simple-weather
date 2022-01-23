@@ -20,3 +20,21 @@ export const Title = styled.Text`
   font-weight: bold;
   margin-left: 10px;
 `;
+
+export const ContentContainer = styled.ScrollView`
+  padding-horizontal: 20px;
+  margin-top: 15px;
+
+  flex: 1;
+`;
+
+export const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const PreferenceName = styled.Text`
+  font-size: ${({ theme }) => theme.typography.sizes.medium};
+  color: ${({ theme }) => theme.colors.text_secondary};
+`;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
 import { usePreferences } from '../../../../store/usePreferences';
@@ -22,6 +23,8 @@ type Props = {
 };
 
 export function CityCard({ city }: Props) {
+  const theme = useTheme();
+
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
   const favoriteCity = useFavoriteCities(state => state.favoriteCity);
 
@@ -34,7 +37,7 @@ export function CityCard({ city }: Props) {
   return (
     <Container
       style={{
-        shadowColor: '#000',
+        shadowColor: theme.colors.shadow,
         shadowOffset: {
           width: 0,
           height: 2,
@@ -51,7 +54,11 @@ export function CityCard({ city }: Props) {
           <Country>{city.country}</Country>
         </DescriptionContainer>
         <TouchableOpacity onPress={() => handleFavoriteCity(city.id)}>
-          <Ionicons name="heart-outline" size={20} />
+          <Ionicons
+            name="heart-outline"
+            size={20}
+            color={theme.colors.primary}
+          />
         </TouchableOpacity>
       </LeftSideContainer>
 

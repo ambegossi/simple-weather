@@ -28,7 +28,7 @@ export const Country = styled.Text`
 
 export const WeatherDescription = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.small};
-  color: ${({ theme }) => theme.colors.text_secondary};
+  color: ${({ theme }) => theme.colors.text_primary};
   margin-bottom: 5px;
 `;
 
