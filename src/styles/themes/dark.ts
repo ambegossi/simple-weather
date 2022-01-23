@@ -6,7 +6,7 @@ export default {
     text_primary: '#FFFFFF',
     text_secondary: '#8F8F8F',
 
-    shape: '#1A1A1A',
+    shape: '#212121',
     shadow: '#FFFFFF',
     background: '#1A1A1A',
 
