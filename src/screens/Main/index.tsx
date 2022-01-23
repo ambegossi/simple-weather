@@ -20,6 +20,7 @@ import {
   ContentContainer,
   LoadingContainer,
 } from './styles';
+import { getOpenWeatherLanguage } from '../../utils/language';
 
 export function Main() {
   const theme = useTheme();
@@ -27,8 +28,8 @@ export function Main() {
   const { t } = useTranslation();
 
   const { cities, fetchCitiesWeather, fetchCitiesWeatherStatus } = useCities();
+  const { temperatureUnit, language } = usePreferences();
   const favoriteCitiesIds = useFavoriteCities(state => state.favoriteCitiesIds);
-  const temperatureUnit = usePreferences(state => state.temperatureUnit);
 
   const hasFavoriteCities = !!favoriteCitiesIds.length;
   const hasNonFavoriteCities = cities.some(
@@ -45,8 +46,9 @@ export function Main() {
 
   useFocusEffect(
     useCallback(() => {
-      fetchCitiesWeather(temperatureUnit);
-    }, [fetchCitiesWeather, temperatureUnit]),
+      const openWeatherLanguage = getOpenWeatherLanguage(language);
+      fetchCitiesWeather(temperatureUnit, openWeatherLanguage);
+    }, [fetchCitiesWeather, temperatureUnit, language]),
   );
 
   return (

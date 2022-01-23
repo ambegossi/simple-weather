@@ -11,7 +11,10 @@ type State = {
   cities: City[];
   setCities: (cities: City[]) => void;
   addCity: (city: City) => void;
-  fetchCitiesWeather: (unit: 'celsius' | 'fahrenheit') => void;
+  fetchCitiesWeather: (
+    unit: 'celsius' | 'fahrenheit',
+    language: string,
+  ) => void;
   fetchCitiesWeatherStatus: string;
 };
 
@@ -26,7 +29,10 @@ export const useCities = create<State>(
 
           set({ cities: [...cities, city] });
         },
-        fetchCitiesWeather: async (unit: 'celsius' | 'fahrenheit') => {
+        fetchCitiesWeather: async (
+          unit: 'celsius' | 'fahrenheit',
+          language: string,
+        ) => {
           try {
             const { cities } = get();
 
@@ -43,7 +49,7 @@ export const useCities = create<State>(
             await Promise.all(
               cities.map(async city => {
                 const { data } = await weatherApi.get(
-                  `weather?q=${city.name}&units=${weatherUnit}&appid=${OPEN_WEATHER_API_KEY}`,
+                  `weather?q=${city.name}&units=${weatherUnit}&lang=${language}&appid=${OPEN_WEATHER_API_KEY}`,
                 );
 
                 const { temp, temp_min, temp_max } = data.main;

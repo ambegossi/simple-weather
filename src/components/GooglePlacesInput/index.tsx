@@ -8,7 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { GOOGLE_PLACES_API_KEY } from 'react-native-dotenv';
 
 import { generateUuid } from '../../utils/uuid';
-import { getGooglePlacesLanguage } from '../../utils/locale';
+import { getGooglePlacesLanguage } from '../../utils/language';
+import { usePreferences } from '../../store/usePreferences';
 import { City } from '../../types/city';
 
 function formatCity(details: GooglePlaceDetail) {
@@ -30,9 +31,11 @@ type Props = {
 
 export function GooglePlacesInput({ setCity }: Props) {
   const theme = useTheme();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const language = getGooglePlacesLanguage(i18n.language);
+  const language = usePreferences(state => state.language);
+
+  const googlePlacesLanguage = getGooglePlacesLanguage(language);
 
   function handleSetCity(details: GooglePlaceDetail | null) {
     if (details) {
@@ -68,7 +71,7 @@ export function GooglePlacesInput({ setCity }: Props) {
       }}
       query={{
         key: GOOGLE_PLACES_API_KEY,
-        language,
+        language: googlePlacesLanguage,
       }}
     />
   );
