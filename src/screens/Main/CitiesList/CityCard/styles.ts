@@ -13,12 +13,14 @@ export const Container = styled.View`
 export const LeftSideContainer = styled.View`
   flex-direction: column;
   align-items: flex-start;
+  flex: 1;
 `;
 
 export const DescriptionContainer = styled.View`
   margin-bottom: 5px;
 
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
 `;
 

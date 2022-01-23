@@ -5,12 +5,15 @@ import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 
+import { CitiesList } from './CitiesList';
+import { FavoriteCitiesList } from './FavoriteCitiesList';
 import { Warning } from './Warning';
 
-import { Container, Header, AddButton, ContentContainer } from './styles';
 import { useCities } from '../../store/useCities';
+import { useFavoriteCities } from '../../store/useFavoriteCities';
 import { usePreferences } from '../../store/usePreferences';
-import { CitiesList } from './CitiesList';
+
+import { Container, Header, AddButton, ContentContainer } from './styles';
 
 export function Main() {
   const theme = useTheme();
@@ -18,7 +21,13 @@ export function Main() {
   const { t } = useTranslation();
 
   const { cities, fetchCitiesWeather, fetchCitiesWeatherStatus } = useCities();
+  const favoriteCitiesIds = useFavoriteCities(state => state.favoriteCitiesIds);
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
+
+  const hasFavoriteCities = !!favoriteCitiesIds.length;
+  const hasNonFavoriteCities = cities.some(
+    city => !favoriteCitiesIds.includes(city.id),
+  );
 
   function handleNavigateAddCity() {
     navigation.navigate('AddCity');
@@ -59,7 +68,11 @@ export function Main() {
             subtitle={t('please-try-again-later')}
           />
         ) : (
-          <CitiesList />
+          <>
+            {hasFavoriteCities && <FavoriteCitiesList />}
+
+            {hasNonFavoriteCities && <CitiesList />}
+          </>
         )}
       </ContentContainer>
     </Container>

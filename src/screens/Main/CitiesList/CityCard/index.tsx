@@ -3,7 +3,8 @@ import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { usePreferences } from '../../../../store/usePreferences';
-import { WeatherCity } from '../../../../types/city';
+import { useFavoriteCities } from '../../../../store/useFavoriteCities';
+import { City } from '../../../../types/city';
 
 import {
   Container,
@@ -17,13 +18,18 @@ import {
 } from './styles';
 
 type Props = {
-  city: WeatherCity;
+  city: City;
 };
 
 export function CityCard({ city }: Props) {
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
+  const favoriteCity = useFavoriteCities(state => state.favoriteCity);
 
   const unit = temperatureUnit === 'celsius' ? 'C' : 'F';
+
+  function handleFavoriteCity(id: string) {
+    favoriteCity(id);
+  }
 
   return (
     <Container
@@ -44,14 +50,14 @@ export function CityCard({ city }: Props) {
           <Name>{`${city.name}, `}</Name>
           <Country>{city.country}</Country>
         </DescriptionContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleFavoriteCity(city.id)}>
           <Ionicons name="heart-outline" size={20} />
         </TouchableOpacity>
       </LeftSideContainer>
 
       <RightSideContainer>
-        <Temperature>{`${city.temp}° ${unit}`}</Temperature>
-        <WeatherIcon source={{ uri: city.icon }} />
+        <Temperature>{`${city.weather?.temp}° ${unit}`}</Temperature>
+        <WeatherIcon source={{ uri: city.weather?.icon }} />
       </RightSideContainer>
     </Container>
   );
