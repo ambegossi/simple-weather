@@ -19,6 +19,11 @@ export const ContentContainer = styled.View`
   flex: 1;
 `;
 
+export const LoadingContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+`;
+
 export const AddButton = styled.TouchableOpacity`
   width: 40px;
   height: 40px;

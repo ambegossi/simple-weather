@@ -13,7 +13,13 @@ import { useCities } from '../../store/useCities';
 import { useFavoriteCities } from '../../store/useFavoriteCities';
 import { usePreferences } from '../../store/usePreferences';
 
-import { Container, Header, AddButton, ContentContainer } from './styles';
+import {
+  Container,
+  Header,
+  AddButton,
+  ContentContainer,
+  LoadingContainer,
+} from './styles';
 
 export function Main() {
   const theme = useTheme();
@@ -65,7 +71,9 @@ export function Main() {
             subtitle={t('try-adding-a-city-using-the-plus-button')}
           />
         ) : fetchCitiesWeatherStatus === 'loading' ? (
-          <ActivityIndicator size="large" color={theme.colors.primary} />
+          <LoadingContainer>
+            <ActivityIndicator size="large" color={theme.colors.primary} />
+          </LoadingContainer>
         ) : fetchCitiesWeatherStatus === 'error' ? (
           <Warning
             title={t('ops-an-error-has-occurred')}
