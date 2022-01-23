@@ -35,8 +35,7 @@ export default function App() {
     };
 
     initI18n();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [language]);
 
   if (!i18nInitialized) {
     return <AppLoading />;

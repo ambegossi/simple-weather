@@ -3,14 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { Picker } from '../../../components/Picker';
 
 import { LOCALES } from '../../../i18n';
+import { usePreferences } from '../../../store/usePreferences';
 
 export function LanguagePicker() {
   const { t, i18n } = useTranslation();
 
+  const setLanguage = usePreferences(state => state.setLanguage);
+
   const currentLanguage = i18n.language;
 
-  function setLanguage(itemValue: string) {
-    i18n.changeLanguage(itemValue);
+  function handleSetLanguage(language: string) {
+    setLanguage(language);
   }
 
   return (
@@ -20,7 +23,7 @@ export function LanguagePicker() {
         { label: t('portuguese-br'), value: LOCALES.PORTUGUESE_BR },
       ]}
       selectedValue={currentLanguage}
-      setValue={setLanguage}
+      setValue={handleSetLanguage}
     />
   );
 }
