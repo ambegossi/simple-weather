@@ -2,5 +2,9 @@
   "looks-like-you-havent-added-a-city-yet": "Looks like you haven't added a city yet",
   "try-adding-a-city-using-the-plus-button": "Try adding a city using the + button",
   "type-the-city-here": "Type the city here",
-  "add": "Add"
+  "add": "Add",
+  "ops-an-error-has-occurred": "Ops... An error has occured",
+  "please-try-again-later": "Please, try again later",
+  "favorites": "Favorites",
+  "cities": "Cities"
 }

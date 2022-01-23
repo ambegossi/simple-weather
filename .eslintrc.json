@@ -58,7 +58,8 @@
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "no-nested-ternary": "off"
   },
   "settings": {
     "import/resolver": {

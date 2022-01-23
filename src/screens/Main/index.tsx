@@ -1,23 +1,34 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 
-import { NoCityInfo } from './NoCityInfo';
+import { Warning } from './Warning';
 
 import { Container, Header, AddButton, ContentContainer } from './styles';
 import { useCities } from '../../store/useCities';
+import { usePreferences } from '../../store/usePreferences';
 import { CitiesList } from './CitiesList';
 
 export function Main() {
   const theme = useTheme();
   const navigation = useNavigation();
-  const cities = useCities(state => state.cities);
+  const { t } = useTranslation();
+
+  const { cities, fetchCitiesWeather, fetchCitiesWeatherStatus } = useCities();
+  const temperatureUnit = usePreferences(state => state.temperatureUnit);
 
   function handleNavigateAddCity() {
     navigation.navigate('AddCity');
   }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchCitiesWeather(temperatureUnit);
+    }, [fetchCitiesWeather, temperatureUnit]),
+  );
 
   return (
     <Container>
@@ -35,7 +46,21 @@ export function Main() {
       </Header>
 
       <ContentContainer>
-        {cities.length ? <CitiesList /> : <NoCityInfo />}
+        {!cities.length ? (
+          <Warning
+            title={t('looks-like-you-havent-added-a-city-yet')}
+            subtitle={t('try-adding-a-city-using-the-plus-button')}
+          />
+        ) : fetchCitiesWeatherStatus === 'loading' ? (
+          <ActivityIndicator size="large" />
+        ) : fetchCitiesWeatherStatus === 'error' ? (
+          <Warning
+            title={t('ops-an-error-has-occurred')}
+            subtitle={t('please-try-again-later')}
+          />
+        ) : (
+          <CitiesList />
+        )}
       </ContentContainer>
     </Container>
   );
