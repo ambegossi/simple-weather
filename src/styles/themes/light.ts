@@ -14,12 +14,15 @@ export default {
 
     button_primary_bg: '#1A1A1A',
     button_primary_text: '#FFFFFF',
+
+    heart: '#ED0952',
   },
   typography: {
     sizes: {
       small: '13px',
       medium: '15px',
       large: '20px',
+      xlarge: '24px',
     },
   },
   border: {
