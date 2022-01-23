@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../../../components/Button';
-import { useCities } from '../../../store/useCities';
 
+import { useCities } from '../../../store/useCities';
 import { City } from '../../../types/city';
 
 import { Container, Name, Country } from './styles';
@@ -16,6 +16,7 @@ type Props = {
 export function CityCard({ city }: Props) {
   const navigation = useNavigation();
   const { t } = useTranslation();
+
   const addCity = useCities(state => state.addCity);
 
   function handleAddCity() {
