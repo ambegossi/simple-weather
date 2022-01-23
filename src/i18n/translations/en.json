@@ -12,5 +12,6 @@
   "dark-mode": "Dark mode",
   "language": "Language",
   "english": "English",
-  "portuguese-br": "Portuguese-BR"
+  "portuguese-br": "Portuguese-BR",
+  "temperature-unit": "Temperature unit"
 }

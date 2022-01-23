@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 
 import { LanguagePicker } from './LanguagePicker';
+import { TemperatureUnitPicker } from './TemperatureUnitPicker';
 
 import { LOCALES } from '../../i18n';
 import { usePreferences } from '../../store/usePreferences';
+import { capitalizeFirstetter } from '../../utils/format';
 
 import {
   Container,
@@ -17,7 +19,7 @@ import {
   ContentContainer,
   Row,
   PreferenceName,
-  Language,
+  PreferenceValue,
 } from './styles';
 
 export function Preferences() {
@@ -25,9 +27,11 @@ export function Preferences() {
   const navigation = useNavigation();
   const { t, i18n } = useTranslation();
 
-  const { isDarkMode, toggleDarkMode } = usePreferences();
+  const { isDarkMode, toggleDarkMode, temperatureUnit } = usePreferences();
 
   const [isOpenLanguagePicker, setIsOpenLanguagePicker] = useState(false);
+  const [isOpenTemperatureUnitPicker, setIsOpenTemperatureUnitPicker] =
+    useState(false);
 
   function handleBack() {
     navigation.goBack();
@@ -36,6 +40,9 @@ export function Preferences() {
   const toggleSwitch = () => toggleDarkMode();
 
   const toggleLanguagePicker = () => setIsOpenLanguagePicker(prev => !prev);
+
+  const toggleTemperatureUnitPicker = () =>
+    setIsOpenTemperatureUnitPicker(prev => !prev);
 
   return (
     <Container>
@@ -58,14 +65,23 @@ export function Preferences() {
         <TouchableOpacity onPress={toggleLanguagePicker}>
           <Row>
             <PreferenceName>{t('language')}</PreferenceName>
-            <Language>
+            <PreferenceValue>
               {i18n.language === LOCALES.ENGLISH
                 ? t('english')
                 : t('portuguese-br')}
-            </Language>
+            </PreferenceValue>
           </Row>
         </TouchableOpacity>
         {isOpenLanguagePicker && <LanguagePicker />}
+        <TouchableOpacity onPress={toggleTemperatureUnitPicker}>
+          <Row>
+            <PreferenceName>{t('temperature-unit')}</PreferenceName>
+            <PreferenceValue>
+              {capitalizeFirstetter(temperatureUnit)}
+            </PreferenceValue>
+          </Row>
+        </TouchableOpacity>
+        {isOpenTemperatureUnitPicker && <TemperatureUnitPicker />}
       </ContentContainer>
     </Container>
   );

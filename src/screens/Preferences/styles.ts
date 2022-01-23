@@ -43,7 +43,7 @@ export const PreferenceName = styled.Text`
   color: ${({ theme }) => theme.colors.text_secondary};
 `;
 
-export const Language = styled.Text`
+export const PreferenceValue = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.medium};
   color: ${({ theme }) => theme.colors.text_primary};
 `;
