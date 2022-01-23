@@ -1,4 +1,6 @@
+import { Platform } from 'react-native';
 import { Picker as RNPicker } from '@react-native-picker/picker';
+import { useTheme } from 'styled-components';
 
 type PickerItem = {
   label: string;
@@ -12,13 +14,23 @@ type Props = {
 };
 
 export function Picker({ items, selectedValue, setValue }: Props) {
+  const theme = useTheme();
+
   return (
     <RNPicker
       selectedValue={selectedValue}
       onValueChange={(itemValue: string) => setValue(itemValue)}
+      style={{
+        color: theme.colors.text_primary,
+      }}
     >
       {items.map(item => (
-        <RNPicker.Item key={item.value} label={item.label} value={item.value} />
+        <RNPicker.Item
+          color={Platform.OS === 'ios' ? theme.colors.text_primary : 'default'}
+          key={item.value}
+          label={item.label}
+          value={item.value}
+        />
       ))}
     </RNPicker>
   );
