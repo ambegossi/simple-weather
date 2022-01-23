@@ -7,6 +7,8 @@ type State = {
   setTemperatureUnit: (unit: string) => void;
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  language: string;
+  setLanguage: (language: string) => void;
 };
 
 export const usePreferences = create<State>(
@@ -18,6 +20,8 @@ export const usePreferences = create<State>(
           set({ temperatureUnit: unit }),
         isDarkMode: false,
         toggleDarkMode: () => set(state => ({ isDarkMode: !state.isDarkMode })),
+        language: 'en',
+        setLanguage: (language: string) => set({ language }),
       } as State),
     {
       name: 'usePreferences',

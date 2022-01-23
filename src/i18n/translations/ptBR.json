@@ -9,5 +9,8 @@
   "favorites": "Favoritas",
   "cities": "Cidades",
   "preferences": "Preferências",
-  "dark-mode": "Modo dark"
+  "dark-mode": "Modo dark",
+  "language": "Idioma",
+  "english": "Inglês",
+  "portuguese-br": "Português-BR"
 }

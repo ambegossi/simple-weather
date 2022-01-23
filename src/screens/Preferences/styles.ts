@@ -29,6 +29,8 @@ export const ContentContainer = styled.ScrollView`
 `;
 
 export const Row = styled.View`
+  margin-vertical: 10px;
+
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -37,4 +39,9 @@ export const Row = styled.View`
 export const PreferenceName = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.medium};
   color: ${({ theme }) => theme.colors.text_secondary};
+`;
+
+export const Language = styled.Text`
+  font-size: ${({ theme }) => theme.typography.sizes.medium};
+  color: ${({ theme }) => theme.colors.text_primary};
 `;
