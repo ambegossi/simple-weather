@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import { TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
@@ -38,7 +38,7 @@ export function Main() {
   }
 
   useFocusEffect(
-    React.useCallback(() => {
+    useCallback(() => {
       fetchCitiesWeather(temperatureUnit);
     }, [fetchCitiesWeather, temperatureUnit]),
   );

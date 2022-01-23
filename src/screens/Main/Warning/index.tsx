@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Container, Title, Subtitle } from './styles';
 
 type Props = {

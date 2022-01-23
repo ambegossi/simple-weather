@@ -1,4 +1,3 @@
-import React from 'react';
 import { Picker as RNPicker } from '@react-native-picker/picker';
 
 type PickerItem = {

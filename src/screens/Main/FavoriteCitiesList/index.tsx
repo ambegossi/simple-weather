@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import { ElementType } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FavoriteCityCard } from './FavoriteCityCard';
