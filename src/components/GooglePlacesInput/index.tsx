@@ -48,7 +48,7 @@ export function GooglePlacesInput({ setCity }: Props) {
       styles={{
         container: {
           paddingHorizontal: 20,
-          flex: 'none',
+          flex: 0,
           marginBottom: 20,
         },
         textInput: {
