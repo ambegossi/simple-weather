@@ -1,10 +1,13 @@
-import { Weather } from './weather';
-
 export type City = {
-  id: string | number[];
+  id: string;
   name: string;
   state: string;
   country: string;
+  weather?: {
+    temp: number;
+    temp_min: number;
+    temp_max: number;
+    icon: string;
+    description: string;
+  };
 };
-
-export type WeatherCity = Weather & City;
