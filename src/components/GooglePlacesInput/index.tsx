@@ -16,12 +16,16 @@ function formatCity(details: GooglePlaceDetail) {
   const name = details.address_components[0].long_name;
   const state = details.address_components[2].short_name;
   const country = details.address_components[3].long_name;
+  const { lat } = details.geometry.location;
+  const { lng } = details.geometry.location;
 
   return {
     id: generateUuid(),
     name,
     state,
     country,
+    lat,
+    lng,
   };
 }
 

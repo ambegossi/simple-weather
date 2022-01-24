@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   padding: 15px;
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: ${({ theme }) => theme.border.radius};
@@ -27,7 +27,7 @@ export const DescriptionContainer = styled.View`
 export const Name = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.medium};
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.text_primary};
 `;
 
 export const Country = styled.Text`
@@ -44,7 +44,7 @@ export const Temperature = styled.Text`
   margin-right: 5px;
   font-size: ${({ theme }) => theme.typography.sizes.large};
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.text_primary};
 `;
 
 export const WeatherIcon = styled.Image`

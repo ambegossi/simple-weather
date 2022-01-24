@@ -10,7 +10,7 @@ export const Container = styled.SafeAreaView`
 
 export const Header = styled.View`
   padding-horizontal: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   flex-direction: row;
   align-items: center;

@@ -49,21 +49,23 @@ export const useCities = create<State>(
             await Promise.all(
               cities.map(async city => {
                 const { data } = await weatherApi.get(
-                  `weather?q=${city.name}&units=${weatherUnit}&lang=${language}&appid=${OPEN_WEATHER_API_KEY}`,
+                  `onecall?lat=${city.lat}&lon=${city.lng}&units=${weatherUnit}&lang=${language}&appid=${OPEN_WEATHER_API_KEY}`,
                 );
 
-                const { temp, temp_min, temp_max } = data.main;
-                const { icon, description } = data.weather[0];
+                data.daily.pop();
+                data.daily.pop();
+
+                const dailyWeatherList = data.daily.map(daily => ({
+                  temp: Math.round(daily.temp.day),
+                  tempMin: Math.round(daily.temp.min),
+                  tempMax: Math.round(daily.temp.max),
+                  weatherDescription: daily.weather[0].description,
+                  icon: `http://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`,
+                }));
 
                 formattedCities.push({
                   ...city,
-                  weather: {
-                    temp: Math.round(temp),
-                    temp_min,
-                    temp_max,
-                    description,
-                    icon: `http://openweathermap.org/img/wn/${icon}@2x.png`,
-                  },
+                  dailyWeatherList,
                 });
               }),
             );

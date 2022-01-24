@@ -1,4 +1,5 @@
 import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -23,14 +24,22 @@ type Props = {
 
 export function CityCard({ city }: Props) {
   const theme = useTheme();
+  const navigation = useNavigation();
 
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
   const favoriteCity = useFavoriteCities(state => state.favoriteCity);
 
   const unit = temperatureUnit === 'celsius' ? 'C' : 'F';
+  const todaysWeather = city.dailyWeatherList ? city.dailyWeatherList[0] : null;
 
   function handleFavoriteCity(id: string) {
     favoriteCity(id);
+  }
+
+  function handleNavigateToCityDetails() {
+    navigation.navigate('CityDetails', {
+      city,
+    });
   }
 
   return (
@@ -46,6 +55,7 @@ export function CityCard({ city }: Props) {
 
         elevation: 5,
       }}
+      onPress={handleNavigateToCityDetails}
     >
       <LeftSideContainer>
         <DescriptionContainer>
@@ -62,8 +72,8 @@ export function CityCard({ city }: Props) {
       </LeftSideContainer>
 
       <RightSideContainer>
-        <Temperature>{`${city.weather?.temp}° ${unit}`}</Temperature>
-        <WeatherIcon source={{ uri: city.weather?.icon }} />
+        <Temperature>{`${todaysWeather?.temp}° ${unit}`}</Temperature>
+        <WeatherIcon source={{ uri: todaysWeather?.icon }} />
       </RightSideContainer>
     </Container>
   );

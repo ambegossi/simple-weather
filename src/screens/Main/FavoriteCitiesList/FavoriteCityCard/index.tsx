@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
 
@@ -26,14 +27,22 @@ type Props = {
 
 export function FavoriteCityCard({ city }: Props) {
   const theme = useTheme();
+  const navigation = useNavigation();
 
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
   const favoriteCity = useFavoriteCities(state => state.favoriteCity);
 
   const unit = temperatureUnit === 'celsius' ? 'C' : 'F';
+  const todaysWeather = city.dailyWeatherList ? city.dailyWeatherList[0] : null;
 
   function handleFavoriteCity(id: string) {
     favoriteCity(id);
+  }
+
+  function handleNavigateToCityDetails() {
+    navigation.navigate('CityDetails', {
+      city,
+    });
   }
 
   return (
@@ -49,22 +58,24 @@ export function FavoriteCityCard({ city }: Props) {
 
         elevation: 5,
       }}
+      onPress={handleNavigateToCityDetails}
     >
       <LeftSideContainer>
         <Name>{city.name}</Name>
         <Country>{city.country}</Country>
-        {city.weather?.description && (
+        {todaysWeather && (
           <WeatherDescription>
-            {capitalizeFirstetter(city.weather.description)}
+            {capitalizeFirstetter(todaysWeather.weatherDescription)}
           </WeatherDescription>
         )}
-        <TempMinAndMax>{`${city.weather?.temp_min}° - ${city.weather?.temp_max}°`}</TempMinAndMax>
+
+        <TempMinAndMax>{`${todaysWeather?.tempMin}° - ${todaysWeather?.tempMax}°`}</TempMinAndMax>
       </LeftSideContainer>
 
       <RightSideContainer>
         <TemperatureContainer>
-          <Temperature>{`${city.weather?.temp}° ${unit}`}</Temperature>
-          <WeatherIcon source={{ uri: city.weather?.icon }} />
+          <Temperature>{`${todaysWeather?.temp}° ${unit}`}</Temperature>
+          <WeatherIcon source={{ uri: todaysWeather?.icon }} />
         </TemperatureContainer>
 
         <FavoriteButton onPress={() => handleFavoriteCity(city.id)}>

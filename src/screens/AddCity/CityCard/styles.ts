@@ -11,7 +11,7 @@ export const Container = styled.View`
 export const Name = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.large};
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.text_primary};
   margin-bottom: 5px;
 `;
 
