@@ -20,6 +20,7 @@
 - [Expo](https://expo.dev/)
 - [Styled Components](https://www.styled-components.com/)
 - [Axios](https://github.com/axios/axios)
+- [Zustand](https://github.com/pmndrs/zustand)
 - [React-i18next](https://react.i18next.com/)
 - [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
 - [OpenWeather API](https://openweathermap.org/)
