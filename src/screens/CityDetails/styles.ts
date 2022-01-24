@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.background};
   padding-top: ${`${Platform.OS === 'android' ? 40 : 0}px`};
+  padding-bottom: 20px;
 
   flex: 1;
 `;
@@ -14,8 +15,6 @@ export const Header = styled.View`
 `;
 
 export const ContentContainer = styled.View`
-  padding-horizontal: 20px;
-
   flex: 1;
 `;
 

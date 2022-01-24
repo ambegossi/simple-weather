@@ -4,7 +4,8 @@ export const Container = styled.TouchableOpacity`
   padding: 15px;
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: ${({ theme }) => theme.border.radius};
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-horizontal: 20px;
 
   flex-direction: row;
 `;

@@ -10,7 +10,6 @@ export const Title = styled.Text`
 
 export const List = styled.FlatList`
   padding-vertical: 15px;
-  padding-horizontal: 20px;
 
   flex: none;
 `;

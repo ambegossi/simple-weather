@@ -5,6 +5,7 @@ export const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: ${({ theme }) => theme.border.radius};
   margin-bottom: 10px;
+  margin-horizontal: 20px;
 
   flex-direction: row;
   justify-content: space-between;
