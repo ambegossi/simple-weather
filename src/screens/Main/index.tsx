@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { TouchableOpacity, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';
@@ -82,11 +82,11 @@ export function Main() {
             subtitle={t('please-try-again-later')}
           />
         ) : (
-          <>
+          <ScrollView>
             {hasFavoriteCities && <FavoriteCitiesList />}
 
             {hasNonFavoriteCities && <CitiesList />}
-          </>
+          </ScrollView>
         )}
       </ContentContainer>
     </Container>

@@ -1,13 +1,11 @@
-import { ElementType } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CityCard } from './CityCard';
 
 import { useCities } from '../../../store/useCities';
 import { useFavoriteCities } from '../../../store/useFavoriteCities';
-import { City } from '../../../types/city';
 
-import { Title, List } from './styles';
+import { Title } from './styles';
 
 export function CitiesList() {
   const { t } = useTranslation();
@@ -23,11 +21,9 @@ export function CitiesList() {
     <>
       <Title>{t('cities')}</Title>
 
-      <List<ElementType>
-        data={nonFavoriteCities}
-        renderItem={({ item }: { item: City }) => <CityCard city={item} />}
-        keyExtractor={(item: City) => item.id}
-      />
+      {nonFavoriteCities.map(city => (
+        <CityCard key={city.id} city={city} />
+      ))}
     </>
   );
 }
