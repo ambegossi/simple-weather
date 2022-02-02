@@ -35,10 +35,6 @@ export function FavoriteCityCard({ city }: Props) {
   const unit = temperatureUnit === 'celsius' ? 'C' : 'F';
   const todaysWeather = city.dailyWeatherList ? city.dailyWeatherList[0] : null;
 
-  function handleFavoriteCity(id: string) {
-    favoriteCity(id);
-  }
-
   function handleNavigateToCityDetails() {
     navigation.navigate('CityDetails', {
       city,
@@ -78,7 +74,7 @@ export function FavoriteCityCard({ city }: Props) {
           <WeatherIcon source={{ uri: todaysWeather?.icon }} />
         </TemperatureContainer>
 
-        <FavoriteButton onPress={() => handleFavoriteCity(city.id)}>
+        <FavoriteButton onPress={() => favoriteCity(city.id)}>
           <Ionicons name="heart" size={32} color={theme.colors.heart} />
         </FavoriteButton>
       </RightSideContainer>
