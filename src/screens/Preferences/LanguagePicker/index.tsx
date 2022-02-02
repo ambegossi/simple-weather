@@ -12,10 +12,6 @@ export function LanguagePicker() {
 
   const currentLanguage = i18n.language;
 
-  function handleSetLanguage(language: string) {
-    setLanguage(language);
-  }
-
   return (
     <Picker
       items={[
@@ -23,7 +19,7 @@ export function LanguagePicker() {
         { label: t('portuguese-br'), value: LOCALES.PORTUGUESE_BR },
       ]}
       selectedValue={currentLanguage}
-      setValue={handleSetLanguage}
+      setValue={setLanguage}
     />
   );
 }
