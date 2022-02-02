@@ -32,10 +32,6 @@ export function CityCard({ city }: Props) {
   const unit = temperatureUnit === 'celsius' ? 'C' : 'F';
   const todaysWeather = city.dailyWeatherList ? city.dailyWeatherList[0] : null;
 
-  function handleFavoriteCity(id: string) {
-    favoriteCity(id);
-  }
-
   function handleNavigateToCityDetails() {
     navigation.navigate('CityDetails', {
       city,
@@ -62,7 +58,7 @@ export function CityCard({ city }: Props) {
           <Name>{`${city.name}, `}</Name>
           <Country>{city.country}</Country>
         </DescriptionContainer>
-        <TouchableOpacity onPress={() => handleFavoriteCity(city.id)}>
+        <TouchableOpacity onPress={() => favoriteCity(city.id)}>
           <Ionicons
             name="heart-outline"
             size={20}
