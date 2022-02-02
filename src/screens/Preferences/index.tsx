@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { TouchableOpacity, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
@@ -37,12 +37,15 @@ export function Preferences() {
     navigation.goBack();
   }
 
-  const toggleSwitch = () => toggleDarkMode();
+  const toggleLanguagePicker = useCallback(
+    () => setIsOpenLanguagePicker(prev => !prev),
+    [],
+  );
 
-  const toggleLanguagePicker = () => setIsOpenLanguagePicker(prev => !prev);
-
-  const toggleTemperatureUnitPicker = () =>
-    setIsOpenTemperatureUnitPicker(prev => !prev);
+  const toggleTemperatureUnitPicker = useCallback(
+    () => setIsOpenTemperatureUnitPicker(prev => !prev),
+    [],
+  );
 
   return (
     <Container>
@@ -60,7 +63,7 @@ export function Preferences() {
       <ContentContainer>
         <Row>
           <PreferenceName>{t('dark-mode')}</PreferenceName>
-          <Switch onValueChange={toggleSwitch} value={isDarkMode} />
+          <Switch onValueChange={toggleDarkMode} value={isDarkMode} />
         </Row>
         <TouchableOpacity onPress={toggleLanguagePicker}>
           <Row>
