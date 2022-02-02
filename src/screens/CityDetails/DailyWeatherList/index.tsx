@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { DailyWeatherCard } from './DailyWeatherCard';
 
-import { DailyWeather } from '../../../types/weather';
+import { Weather, DailyWeather } from '../../../types/weather';
 import { addDays, formatDate } from '../../../utils/date';
 
 import { List } from './styles';
@@ -11,7 +11,7 @@ import { usePreferences } from '../../../store/usePreferences';
 import { capitalizeFirstetter, capitalize } from '../../../utils/format';
 
 type Props = {
-  dailyWeatherList: DailyWeather[];
+  dailyWeatherList: Weather[];
 };
 
 export function DailyWeatherList({ dailyWeatherList }: Props) {

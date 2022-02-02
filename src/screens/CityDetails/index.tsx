@@ -73,7 +73,9 @@ export function CityDetails({ route }: Props) {
           <TempMinAndMax>{`${todaysWeather?.tempMin}° - ${todaysWeather?.tempMax}°`}</TempMinAndMax>
         </TodaysWeatherContainer>
 
-        <DailyWeatherList dailyWeatherList={dailyWeatherList} />
+        {dailyWeatherList && (
+          <DailyWeatherList dailyWeatherList={dailyWeatherList} />
+        )}
       </ContentContainer>
     </Container>
   );
