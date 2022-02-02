@@ -5,10 +5,10 @@ import { DailyWeatherCard } from './DailyWeatherCard';
 
 import { Weather, DailyWeather } from '../../../types/weather';
 import { addDays, formatDate } from '../../../utils/date';
-
-import { List } from './styles';
 import { usePreferences } from '../../../store/usePreferences';
 import { capitalizeFirstetter, capitalize } from '../../../utils/format';
+
+import { List } from './styles';
 
 type Props = {
   dailyWeatherList: Weather[];
