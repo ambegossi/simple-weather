@@ -6,6 +6,7 @@ import { OPEN_WEATHER_API_KEY } from 'react-native-dotenv';
 
 import { weatherApi } from '../services/weatherApi';
 import { City } from '../types/city';
+import { OneCallOpenWeatherApiResponse } from '../types/openWeather';
 
 type State = {
   cities: City[];
@@ -48,9 +49,10 @@ export const useCities = create<State>(
 
             await Promise.all(
               cities.map(async city => {
-                const { data } = await weatherApi.get(
-                  `onecall?lat=${city.lat}&lon=${city.lng}&units=${weatherUnit}&lang=${language}&appid=${OPEN_WEATHER_API_KEY}`,
-                );
+                const { data } =
+                  await weatherApi.get<OneCallOpenWeatherApiResponse>(
+                    `onecall?lat=${city.lat}&lon=${city.lng}&units=${weatherUnit}&lang=${language}&appid=${OPEN_WEATHER_API_KEY}`,
+                  );
 
                 data.daily.pop();
                 data.daily.pop();
