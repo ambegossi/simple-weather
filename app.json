@@ -29,7 +29,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "",
+    "description": "Simple app to check the weather for cities.",
     "githubUrl": "https://github.com/ambegossi/simple-weather"
   }
 }
