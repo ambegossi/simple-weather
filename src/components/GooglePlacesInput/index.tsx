@@ -10,12 +10,13 @@ import { GOOGLE_PLACES_API_KEY } from 'react-native-dotenv';
 import { generateUuid } from '../../utils/uuid';
 import { getGooglePlacesLanguage } from '../../utils/language';
 import { usePreferences } from '../../store/usePreferences';
+import { getCity, getCountry, getState } from '../../utils/googlePlaces';
 import { City } from '../../types/city';
 
 function formatCity(details: GooglePlaceDetail) {
-  const name = details.address_components[0]?.long_name;
-  const state = details.address_components[2]?.short_name;
-  const country = details.address_components[3]?.long_name;
+  const name = getCity(details);
+  const state = getState(details);
+  const country = getCountry(details);
   const { lat } = details.geometry.location;
   const { lng } = details.geometry.location;
 
