@@ -10,7 +10,7 @@ const Providers: React.FC = ({ children }) => (
 );
 
 describe('Button component', () => {
-  it('renders correctly', () => {
+  it('should render correctly', () => {
     const tree = render(<Button title="Button title" />, {
       wrapper: Providers,
     }).toJSON();
