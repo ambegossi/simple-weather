@@ -4,11 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
+import { GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 
 import { GooglePlacesInput } from '../../components/GooglePlacesInput';
 import { CityCard } from './CityCard';
 
 import { City } from '../../types/city';
+import { composeCity } from '../../utils/city';
 
 import { Container, Header, Title } from './styles';
 
@@ -21,6 +23,12 @@ export function AddCity() {
 
   function handleBack() {
     navigation.goBack();
+  }
+
+  function handleSetCity(placeDetails: GooglePlaceDetail) {
+    const composedCity = composeCity(placeDetails);
+
+    setCity(composedCity);
   }
 
   return (
@@ -36,7 +44,7 @@ export function AddCity() {
         <Title>{t('add-city')}</Title>
       </Header>
 
-      <GooglePlacesInput setCity={setCity} />
+      <GooglePlacesInput onSelectPlace={handleSetCity} />
 
       {city && <CityCard city={city} />}
     </Container>
