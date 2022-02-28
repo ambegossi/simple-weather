@@ -17,12 +17,4 @@ describe('Button component', () => {
 
     getByText('Button title');
   });
-
-  it('should render correctly', () => {
-    const tree = render(<Button title="Button title" />, {
-      wrapper: Providers,
-    }).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
 });
