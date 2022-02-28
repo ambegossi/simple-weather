@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 import { GooglePlaceDetail } from 'react-native-google-places-autocomplete';

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 
 import { usePreferences } from '../../../../store/usePreferences';
 import { useFavoriteCities } from '../../../../store/useFavoriteCities';

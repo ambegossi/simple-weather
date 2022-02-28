@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -54,14 +54,17 @@ export function Main() {
   return (
     <Container>
       <Header>
-        <TouchableOpacity onPress={handleNavigateToPreferences}>
+        <TouchableOpacity
+          onPress={handleNavigateToPreferences}
+          testID="settings-button"
+        >
           <Ionicons
             name="settings-outline"
             size={34}
             color={theme.colors.primary}
           />
         </TouchableOpacity>
-        <AddButton onPress={handleNavigateToAddCity}>
+        <AddButton onPress={handleNavigateToAddCity} testID="add-button">
           <Ionicons name="add" size={24} color={theme.colors.secondary} />
         </AddButton>
       </Header>

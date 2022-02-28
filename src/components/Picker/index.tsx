@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 import { Picker as RNPicker } from '@react-native-picker/picker';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 
 type PickerItem = {
   label: string;

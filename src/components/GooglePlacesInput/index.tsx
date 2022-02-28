@@ -2,7 +2,7 @@ import {
   GooglePlacesAutocomplete,
   GooglePlaceDetail,
 } from 'react-native-google-places-autocomplete';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { useTranslation } from 'react-i18next';
 
 import { GOOGLE_PLACES_API_KEY } from 'react-native-dotenv';
