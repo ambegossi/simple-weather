@@ -1,4 +1,4 @@
-export type OneCallOpenWeatherApiResponse = {
+export type CityWeatherApiResponse = {
   daily: {
     temp: {
       day: number;
