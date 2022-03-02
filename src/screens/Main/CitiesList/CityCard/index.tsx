@@ -52,13 +52,17 @@ export function CityCard({ city }: Props) {
         elevation: 5,
       }}
       onPress={handleNavigateToCityDetails}
+      testID={`city-card-${city.id}`}
     >
       <LeftSideContainer>
         <DescriptionContainer>
           <Name>{`${city.name}, `}</Name>
           <Country>{city.country}</Country>
         </DescriptionContainer>
-        <TouchableOpacity onPress={() => favoriteCity(city.id)}>
+        <TouchableOpacity
+          onPress={() => favoriteCity(city.id)}
+          testID={`favorite-city-button-${city.id}`}
+        >
           <Ionicons
             name="heart-outline"
             size={20}

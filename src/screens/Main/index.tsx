@@ -76,7 +76,7 @@ export function Main() {
             subtitle={t('try-adding-a-city-using-the-plus-button')}
           />
         ) : fetchCitiesWeatherStatus === 'loading' ? (
-          <LoadingContainer>
+          <LoadingContainer testID="loading">
             <ActivityIndicator size="large" color={theme.colors.primary} />
           </LoadingContainer>
         ) : fetchCitiesWeatherStatus === 'error' ? (

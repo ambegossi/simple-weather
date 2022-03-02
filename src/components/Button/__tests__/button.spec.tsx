@@ -10,7 +10,7 @@ const Providers: React.FC = ({ children }) => (
 );
 
 describe('Button component', () => {
-  it('should has a title', () => {
+  it('renders a title', () => {
     const { getByText } = render(<Button title="Button title" />, {
       wrapper: Providers,
     });

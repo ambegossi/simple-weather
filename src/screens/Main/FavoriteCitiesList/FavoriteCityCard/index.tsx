@@ -55,6 +55,7 @@ export function FavoriteCityCard({ city }: Props) {
         elevation: 5,
       }}
       onPress={handleNavigateToCityDetails}
+      testID={`favorite-city-card-${city.id}`}
     >
       <LeftSideContainer>
         <Name>{city.name}</Name>
