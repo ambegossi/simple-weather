@@ -46,8 +46,11 @@ export function DailyWeatherList({ dailyWeatherList }: Props) {
   return (
     <List<ElementType>
       data={formattedDailyWeatherList}
-      renderItem={({ item }: { item: DailyWeather }) => (
-        <DailyWeatherCard dailyWeather={item} />
+      renderItem={({ item, index }: { item: DailyWeather; index: number }) => (
+        <DailyWeatherCard
+          dailyWeather={item}
+          testID={`daily-weather-card-${index}`}
+        />
       )}
       keyExtractor={(item: DailyWeather) => item.date}
     />

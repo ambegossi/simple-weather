@@ -1,3 +1,4 @@
+import { ViewProps } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
 import { usePreferences } from '../../../../store/usePreferences';
@@ -17,11 +18,11 @@ import {
   WeatherIcon,
 } from './styles';
 
-type Props = {
+type Props = ViewProps & {
   dailyWeather: DailyWeather;
 };
 
-export function DailyWeatherCard({ dailyWeather }: Props) {
+export function DailyWeatherCard({ dailyWeather, ...rest }: Props) {
   const theme = useTheme();
 
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
@@ -41,6 +42,7 @@ export function DailyWeatherCard({ dailyWeather }: Props) {
 
         elevation: 5,
       }}
+      {...rest}
     >
       <LeftSideContainer>
         <Name>{dailyWeather.day}</Name>

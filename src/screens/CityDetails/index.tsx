@@ -63,7 +63,10 @@ export function CityDetails({ route }: Props) {
         <TodaysWeatherContainer>
           <CityName>{city.name}</CityName>
           <StateAndCountry>{`${city.state}, ${city.country}`}</StateAndCountry>
-          <WeatherIcon source={{ uri: todaysWeather?.icon }} />
+          <WeatherIcon
+            source={{ uri: todaysWeather?.icon }}
+            testID="weather-icon"
+          />
           <Temperature>{`${todaysWeather?.temp}° ${unit}`}</Temperature>
           {todaysWeather && (
             <WeatherDescription>
