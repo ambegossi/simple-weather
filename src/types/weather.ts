@@ -5,8 +5,3 @@ export type Weather = {
   icon: string;
   weatherDescription: string;
 };
-
-export type DailyWeather = Weather & {
-  day: string;
-  date: string;
-};

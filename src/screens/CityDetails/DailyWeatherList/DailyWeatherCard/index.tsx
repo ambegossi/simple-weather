@@ -1,9 +1,12 @@
+import { useMemo } from 'react';
 import { ViewProps } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import { useTranslation } from 'react-i18next';
 
 import { usePreferences } from '../../../../store/usePreferences';
-import { capitalizeFirstetter } from '../../../../utils/format';
-import { DailyWeather } from '../../../../types/weather';
+import { capitalize, capitalizeFirstetter } from '../../../../utils/format';
+import { Weather } from '../../../../types/weather';
+import { addDays, formatDate } from '../../../../utils/date';
 
 import {
   Container,
@@ -19,15 +22,32 @@ import {
 } from './styles';
 
 type Props = ViewProps & {
-  dailyWeather: DailyWeather;
+  dailyWeather: Weather;
+  index: number;
 };
 
-export function DailyWeatherCard({ dailyWeather, ...rest }: Props) {
+export function DailyWeatherCard({ dailyWeather, index, ...rest }: Props) {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const temperatureUnit = usePreferences(state => state.temperatureUnit);
+  const language = usePreferences(state => state.language);
 
   const unit = temperatureUnit === 'celsius' ? 'C' : 'F';
+
+  const nextDay = useMemo(() => addDays(new Date(), index + 1), [index]);
+
+  const day = useMemo(() => {
+    if (index === 0) {
+      return t('tomorrow');
+    }
+
+    return capitalizeFirstetter(formatDate(nextDay, 'eeee', language));
+  }, [index, language, nextDay, t]);
+
+  const date = useMemo(() => {
+    return capitalize(formatDate(nextDay, 'dd MMMM', language));
+  }, [language, nextDay]);
 
   return (
     <Container
@@ -45,8 +65,8 @@ export function DailyWeatherCard({ dailyWeather, ...rest }: Props) {
       {...rest}
     >
       <LeftSideContainer>
-        <Name>{dailyWeather.day}</Name>
-        <Country>{dailyWeather.date}</Country>
+        <Name>{day}</Name>
+        <Country>{date}</Country>
         <WeatherDescription>
           {capitalizeFirstetter(dailyWeather.weatherDescription)}
         </WeatherDescription>
@@ -56,7 +76,10 @@ export function DailyWeatherCard({ dailyWeather, ...rest }: Props) {
       <RightSideContainer>
         <TemperatureContainer>
           <Temperature>{`${dailyWeather.temp}° ${unit}`}</Temperature>
-          <WeatherIcon source={{ uri: dailyWeather.icon }} />
+          <WeatherIcon
+            source={{ uri: dailyWeather.icon }}
+            testID="daily-weather-card-icon"
+          />
         </TemperatureContainer>
       </RightSideContainer>
     </Container>
