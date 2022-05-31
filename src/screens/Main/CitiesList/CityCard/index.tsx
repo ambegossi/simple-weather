@@ -73,7 +73,10 @@ export function CityCard({ city }: Props) {
 
       <RightSideContainer>
         <Temperature>{`${todaysWeather?.temp}° ${unit}`}</Temperature>
-        <WeatherIcon source={{ uri: todaysWeather?.icon }} />
+        <WeatherIcon
+          source={{ uri: todaysWeather?.icon }}
+          testID="city-card-icon"
+        />
       </RightSideContainer>
     </Container>
   );
