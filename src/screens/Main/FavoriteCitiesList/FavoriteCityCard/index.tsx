@@ -72,7 +72,10 @@ export function FavoriteCityCard({ city }: Props) {
       <RightSideContainer>
         <TemperatureContainer>
           <Temperature>{`${todaysWeather?.temp}° ${unit}`}</Temperature>
-          <WeatherIcon source={{ uri: todaysWeather?.icon }} />
+          <WeatherIcon
+            source={{ uri: todaysWeather?.icon }}
+            testID="favorite-city-card-icon"
+          />
         </TemperatureContainer>
 
         <FavoriteButton onPress={() => favoriteCity(city.id)}>
