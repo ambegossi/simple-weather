@@ -3,7 +3,7 @@
 </h1>
 
 <h2 align="center">
-  <img src="./.github/simple-weather.gif">
+  <img alt="Simple Weather video demonstration" src="./.github/simple-weather.gif">
 </h2>
 
 <h2 align="center">Open with Expo</h2>
